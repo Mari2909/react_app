@@ -15,9 +15,10 @@ class App extends Component {
     this.state = {
       data: [
         {value: 'Изучить реакт', time: '360', inProgress: false, done:true, id: 1},
-        {value: 'Изучить реакт', time: '240', inProgress: true, done:false, id: 2},
-        {value: 'Изучить реакт', time: '120', inProgress: false, done:false, id: 3}
-        ]
+        {value: 'Изучить хуки', time: '240', inProgress: true, done:false, id: 2},
+        {value: 'Изучить next.js', time: '120', inProgress: false, done:false, id: 3}
+        ],
+        term:''
       }
       this.maxId = 4;
   }
@@ -59,17 +60,33 @@ class App extends Component {
                 }))
   }
 
+  searchTask = (items, term) => {
+      if (term.length === 0) {
+        return items;
+      }
+
+      return items.filter(item => {
+        return item.value.indexOf(term) > -1
+      })
+  }
+
+  onUpdateSearch = (term) =>{
+    this.setState({term});
+  }
   render() {
+    const {data, term} = this.state;
     const tasks = this.state.data.length;
     const done =this.state.data.filter(item =>item.done).length;
+    const visibleData = this.searchTask(data, term);
+
     return (
       <div className="app">
         <AppInfo tasks={tasks} done={done}/>
         <div className="search-panel">
-          <SearchPanel/>
+          <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
           <AppFilter/>
           <TasksList 
-          data={this.state.data}
+          data={visibleData}
           onDelete={this.deleteItem}
           onToggleProp={this.onToggleProp}/>
           <TasksAddForm onAdd={this.addItem}/>
