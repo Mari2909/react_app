@@ -1,10 +1,11 @@
 import './app-info.css';
 
-const AppInfo=()=>{
+const AppInfo=({tasks, done})=>{
     return(
         <div className="app-info">
-            <h1>Заметки</h1>
-            <h2>Количество: </h2>
+            <h1>Задачи</h1>
+            <h2>Общее количество: {tasks}</h2>
+            <h2>Выполнено: {done}</h2>
         </div>
     )
 }
