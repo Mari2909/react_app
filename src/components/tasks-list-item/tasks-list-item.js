@@ -1,10 +1,15 @@
-import './notes-list-item.css';
+import './tasks-list-item.css';
 
-const NotesListItem =()=>{
+const TasksListItem =({value, time, done})=>{
+
+    let classNames = "list-group-item d-flex justify-content-between";
+    if (done){
+        classNames += ' increase';
+    }
     return(
-        <li className="list-group-item d-flex justify-content-between">
-            <span className="list-group-item-label"></span>
-            <input type="text" className="list-group-item-input" />
+        <li className={classNames}>
+            <span className="list-group-item-label">{value}</span>
+            <input type="text" className="list-group-item-input" defaultValue={time + ' мин'}/>
             <div className='d-flex justify-content-center align-items-center'>
                 <button type="button"
                     className="btn-cookie btn-sm ">
@@ -21,4 +26,4 @@ const NotesListItem =()=>{
     )
 }
 
-export default NotesListItem;
+export default TasksListItem;

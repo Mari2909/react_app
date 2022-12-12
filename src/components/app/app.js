@@ -1,19 +1,26 @@
 import AppFilter from '../app-filter/app-filter';
 import AppInfo from '../app-info/app-info';
 import SearchPanel from '../search-panel/search-panel';
-import NotesList from '../notes-list/notes-list';
-import NotesAddForm from '../notes-add-form/notes-add-form';
+import TasksList from '../tasks-list/tasks-list';
+import TasksAddForm from '../tasks-add-form/tasks-add-form';
 import './app.css';
 
 function App() {
+
+  const data = [
+    {value: 'Изучить реакт', time: '360', done: false, id: 1},
+    {value: 'Изучить реакт', time: '240', done: true, id: 2},
+    {value: 'Изучить реакт', time: '120', done: false, id: 3}
+  ];
+
   return (
     <div className="app">
       <AppInfo/>
       <div className="search-panel">
         <SearchPanel/>
         <AppFilter/>
-        <NotesList/>
-        <NotesAddForm/>
+        <TasksList data={data}/>
+        <TasksAddForm/>
       </div>
     </div>
   );

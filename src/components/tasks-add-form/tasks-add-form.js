@@ -1,17 +1,17 @@
-import './notes-add-form.css';
+import './tasks-add-form.css';
 
-const NotesAddForm = () => {
+const TasksAddForm = () => {
     return (
         <div className="app-add-form">
-            <h3>Добавьте новую заметку</h3>
+            <h3>Добавьте новую задачу</h3>
             <form
                 className="add-form d-flex">
                 <input type="text"
                     className="form-control new-post-label"
-                    placeholder="Заметка" />
+                    placeholder="Задача" />
                 <input type="number"
                     className="form-control new-post-label"
-                    placeholder="Выполнено" />
+                    placeholder="Время выполнения" />
 
                 <button type="submit"
                         className="btn btn-outline-light">Добавить</button>
@@ -20,4 +20,4 @@ const NotesAddForm = () => {
     )
 }
 
-export default NotesAddForm;
+export default TasksAddForm;
