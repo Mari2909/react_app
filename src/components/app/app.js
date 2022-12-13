@@ -18,7 +18,8 @@ class App extends Component {
         {value: 'Изучить хуки', time: '240', inProgress: true, done:false, id: 2},
         {value: 'Изучить next.js', time: '120', inProgress: false, done:false, id: 3}
         ],
-        term:''
+        term:'',
+        filter:''
       }
       this.maxId = 4;
   }
@@ -73,18 +74,34 @@ class App extends Component {
   onUpdateSearch = (term) =>{
     this.setState({term});
   }
+
+  filterPost = (items, filter) => {
+      switch (filter) {
+        case 'done' : 
+          return items.filter(item => item.done);
+        case 'inProgress' : 
+          return items.filter(item => item.inProgress);
+        default: 
+          return items
+      }
+  }
+
+  onFilterSelect = (filter) =>{
+    this.setState({filter});
+  }
+
   render() {
-    const {data, term} = this.state;
+    const {data, term, filter} = this.state;
     const tasks = this.state.data.length;
     const done =this.state.data.filter(item =>item.done).length;
-    const visibleData = this.searchTask(data, term);
+    const visibleData = this.filterPost(this.searchTask(data, term), filter);
 
     return (
       <div className="app">
         <AppInfo tasks={tasks} done={done}/>
         <div className="search-panel">
           <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
-          <AppFilter/>
+          <AppFilter filter={filter} onFilterSelect={this.onFilterSelect}/>
           <TasksList 
           data={visibleData}
           onDelete={this.deleteItem}
