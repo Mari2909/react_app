@@ -14,9 +14,9 @@ class App extends Component {
     super(props);
     this.state = {
       data: [
-        {value: 'Изучить реакт', time: '360', inProgress: false, done:true, id: 1},
-        {value: 'Изучить хуки', time: '240', inProgress: true, done:false, id: 2},
-        {value: 'Изучить next.js', time: '120', inProgress: false, done:false, id: 3}
+        // {value: 'Изучить реакт', time: '360', inProgress: false, done:true, id: 1},
+        // {value: 'Изучить хуки', time: '240', inProgress: true, done:false, id: 2},
+        // {value: 'Изучить next.js', time: '120', inProgress: false, done:false, id: 3}
         ],
         term:'',
         filter:''
